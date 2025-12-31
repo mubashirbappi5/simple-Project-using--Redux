@@ -5,7 +5,7 @@ import taskReducer from "./features/tasks/TasksSlice.ts"
 export const store = configureStore({
     reducer:{
 
-        task:taskReducer,
+        todo:taskReducer,
     },
 })
 

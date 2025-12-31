@@ -1,8 +1,13 @@
+import Navbar from "./components/ui/layout/Navber";
 
 const App = () => {
   return (
     <div>
-      <h1>todo app </h1>
+
+      <Navbar/>
+     
+
+
     </div>
   );
 };

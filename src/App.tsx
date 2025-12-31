@@ -1,3 +1,4 @@
+import { Outlet } from "react-router";
 import Navbar from "./components/ui/layout/Navber";
 
 const App = () => {
@@ -5,6 +6,8 @@ const App = () => {
     <div>
 
       <Navbar/>
+
+      <Outlet/>
      
 
 

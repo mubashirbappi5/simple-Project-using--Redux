@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router";
+import { ModeToggle } from "../mode-toggle";
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,7 +29,11 @@ const Navbar: React.FC = () => {
            
             <button className="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 transition">
               Sign Up
-            </button>
+            </button> 
+
+            <div>
+              <ModeToggle/>
+            </div>
           </div>
 
           {/* Mobile Menu Button */}

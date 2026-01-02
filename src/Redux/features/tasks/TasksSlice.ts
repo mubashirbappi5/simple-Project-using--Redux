@@ -18,7 +18,16 @@ const initialState ={
         dueDate:'2026-1-01',
         isCompleted: false,
         priority:'high'
-    }
+    },
+    {
+        id:'sdff',
+        title:'init frontend',
+        description:'cretate home page and routing',
+        dueDate:'2026-1-01',
+        isCompleted: false,
+        priority:'high'
+    },
+
 
 
 ]

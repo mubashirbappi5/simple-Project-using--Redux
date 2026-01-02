@@ -1,12 +1,19 @@
 import { Button } from "@/components/ui/button";
+import type { ITask } from "@/type";
 
-const TaskCard = () => {
+
+interface Iprops{
+    tasks:ITask;
+}
+
+
+const TaskCard = ({tasks}:Iprops) => {
     return (
         <div className="border px-5 py-3 rounded-md">
             <div className="flex justify-between items-center">
                 <div className="flex gap-2 items-center">
                     <div className="size-3 rounded-full bg-green-500"></div>
-                    <h1>task Title</h1>
+                    <h1>{tasks.title}</h1>
 
              </div> 
 
@@ -25,7 +32,7 @@ const TaskCard = () => {
 
             </div>
 
-            <p className="mt-5">task discription</p>
+            <p className="mt-5">{tasks.description}</p>
 
 
             

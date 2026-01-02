@@ -12,8 +12,10 @@ const Tasks = () => {
         <div className="max-w-6xl mx-auto">
             <h1>task</h1> 
 
-
-            <TaskCard/>
+          <div className="flex flex-col gap-5 my-10 ">
+            {tasks.map((task)=>( <TaskCard tasks={task}/>))}
+            
+          </div>
             
         </div>
     );

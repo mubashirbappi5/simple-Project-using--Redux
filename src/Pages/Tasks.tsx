@@ -23,7 +23,7 @@ const Tasks = () => {
            </div>
               </div>
           <div className="flex flex-col gap-5 my-10 ">
-            {tasks.map((task)=>( <TaskCard tasks={task as ITask}/>))}
+            {tasks.map((task)=>( <TaskCard tasks={task as ITask} key={task.id}/>))}
             
           </div>
             

@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import type { ITask } from "@/type";
 
 
@@ -12,8 +13,11 @@ const TaskCard = ({tasks}:Iprops) => {
         <div className="border px-5 py-3 rounded-md">
             <div className="flex justify-between items-center">
                 <div className="flex gap-2 items-center">
-                    <div className="size-3 rounded-full bg-green-500"></div>
-                    <h1>{tasks.title}</h1>
+                    <div className={cn("size-3 rounded-full",{
+                        "bg-green-500":tasks.priority ==="Low",
+                        "bg-red-500":tasks.priority === "High"
+                    })}></div>
+                    <h1 className="text-2xl font-semibold">{tasks.title}</h1>
 
              </div> 
 

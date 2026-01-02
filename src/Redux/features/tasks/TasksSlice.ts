@@ -17,7 +17,7 @@ const initialState ={
         description:'cretate home page and routing',
         dueDate:'2026-1-01',
         isCompleted: false,
-        priority:'high'
+        priority:'Low'
     },
     {
         id:'sdff',
@@ -25,7 +25,7 @@ const initialState ={
         description:'cretate home page and routing',
         dueDate:'2026-1-01',
         isCompleted: false,
-        priority:'high'
+        priority:'High'
     },
 
 

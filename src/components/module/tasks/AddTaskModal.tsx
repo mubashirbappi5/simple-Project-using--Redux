@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button"
+import { Calendar } from "@/components/ui/calendar";
 import {
   Dialog,
   DialogClose,
@@ -11,7 +12,11 @@ import {
 } from "@/components/ui/dialog"
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
+import { format } from "date-fns";
+import { ChevronDownIcon } from "lucide-react";
 import { useForm } from "react-hook-form"
 
 export function AddTaskModal() {
@@ -64,6 +69,73 @@ export function AddTaskModal() {
         <FormControl>
          <Textarea {...field} value={field.value || ""} />
         </FormControl>
+        <FormDescription />
+        <FormMessage />
+      </FormItem>
+    )}
+  />
+
+
+         <FormField
+    control={form.control}
+    name="priority"
+    render={({ field }) => (
+      <FormItem>
+        <FormLabel>Priority</FormLabel>
+        <FormControl>
+         <Select
+         onValueChange={field.onChange}
+         defaultValue={field.value}>
+  <SelectTrigger className="w-full">
+    <SelectValue placeholder="Priority" />
+  </SelectTrigger>
+  <SelectContent>
+    <SelectItem value="Low">Low</SelectItem>
+    <SelectItem value="High">High</SelectItem>
+  </SelectContent>
+</Select>
+        </FormControl>
+        <FormDescription />
+        <FormMessage />
+      </FormItem>
+    )}
+  />
+
+
+
+         <FormField
+    control={form.control}
+    name="dueDate"
+    render={({ field }) => (
+      <FormItem>
+         <FormLabel>Due Date</FormLabel>
+         <Popover >
+        <PopoverTrigger asChild>
+        <FormControl>
+        
+       
+          <Button
+            variant="outline"
+            id="date"
+            className="w-48 justify-between font-normal"
+          >
+            {field.value? (format(field.value, "PPP")): (<span>Select date</span>)}
+            <ChevronDownIcon />
+          </Button>
+        </FormControl>
+        </PopoverTrigger>
+        <PopoverContent className="w-auto overflow-hidden p-0" align="start">
+          <Calendar
+            mode="single"
+            selected={field.value}
+            captionLayout="dropdown"
+            onSelect={field.onChange}
+          />
+        </PopoverContent>
+    
+      
+          
+          </Popover>
         <FormDescription />
         <FormMessage />
       </FormItem>

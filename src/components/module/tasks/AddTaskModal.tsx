@@ -9,15 +9,22 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
+import { Input } from "@/components/ui/input";
+import { useForm } from "react-hook-form"
 
 export function AddTaskModal() {
+
+    const form = useForm();
+
+    const onsubmit = (data) => {
+        console.log(data)
+    }
   return (
     <Dialog>
       <form>
         <DialogTrigger asChild>
-          <Button variant="outline">Open Dialog</Button>
+          <Button className="bg-green-400">Add Task</Button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
@@ -27,22 +34,38 @@ export function AddTaskModal() {
               done.
             </DialogDescription>
           </DialogHeader>
-          <div className="grid gap-4">
-            <div className="grid gap-3">
-              <Label htmlFor="name-1">Name</Label>
-              <Input id="name-1" name="name" defaultValue="Pedro Duarte" />
-            </div>
-            <div className="grid gap-3">
-              <Label htmlFor="username-1">Username</Label>
-              <Input id="username-1" name="username" defaultValue="@peduarte" />
-            </div>
-          </div>
-          <DialogFooter>
+          <Form {...form}>
+
+           <form onSubmit={form.handleSubmit(onsubmit)}>
+         <FormField
+    control={form.control}
+    name="title"
+    render={({ field }) => (
+      <FormItem>
+        <FormLabel />
+        <FormControl>
+          
+          <Input {...field}/>
+        </FormControl>
+        <FormDescription />
+        <FormMessage />
+      </FormItem>
+    )}
+  />
+
+  <DialogFooter>
             <DialogClose asChild>
               <Button variant="outline">Cancel</Button>
             </DialogClose>
             <Button type="submit">Save changes</Button>
           </DialogFooter>
+
+           </form>
+
+
+          
+            </Form>
+          
         </DialogContent>
       </form>
     </Dialog>

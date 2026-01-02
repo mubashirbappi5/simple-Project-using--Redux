@@ -11,11 +11,17 @@ const Tasks = () => {
 
     console.log(tasks)
     return (
-        <div className="max-w-6xl mx-auto">
-            <h1>task</h1> 
+        <div className="max-w-7xl mx-auto">
+           <div className="">
+           
+           
 
-            <AddTaskModal/>
+           <div className="flex justify-between items-center mt-5">
+            <h1 className="text-2xl font-semibold">Task List</h1>
+             <AddTaskModal/>
 
+           </div>
+              </div>
           <div className="flex flex-col gap-5 my-10 ">
             {tasks.map((task)=>( <TaskCard tasks={task as ITask}/>))}
             

@@ -17,9 +17,11 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Textarea } from "@/components/ui/textarea";
 import { addTask } from "@/Redux/features/tasks/TasksSlice";
 import { useAppDispatch } from "@/Redux/hooks";
+import type { ITask } from "@/type";
+
 import { format } from "date-fns";
 import { ChevronDownIcon } from "lucide-react";
-import { useForm } from "react-hook-form"
+import { useForm, type FieldValues, type SubmitHandler } from "react-hook-form"
 
 export function AddTaskModal() {
 
@@ -27,10 +29,14 @@ export function AddTaskModal() {
 
     const dispatch = useAppDispatch()
 
-    const onsubmit = (data) => {
-        console.log(data)
-        dispatch(addTask(data))
-    }
+    
+      
+  
+
+    const onsubmit:SubmitHandler<FieldValues> = (data ) => {
+      console.log(data);
+      dispatch(addTask(data as ITask));
+    };
   return (
     <Dialog>
       <form>

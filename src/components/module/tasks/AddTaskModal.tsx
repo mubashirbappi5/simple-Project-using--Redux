@@ -15,6 +15,8 @@ import { Input } from "@/components/ui/input";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
+import { addTask } from "@/Redux/features/tasks/TasksSlice";
+import { useAppDispatch } from "@/Redux/hooks";
 import { format } from "date-fns";
 import { ChevronDownIcon } from "lucide-react";
 import { useForm } from "react-hook-form"
@@ -23,8 +25,11 @@ export function AddTaskModal() {
 
     const form = useForm();
 
+    const dispatch = useAppDispatch()
+
     const onsubmit = (data) => {
         console.log(data)
+        dispatch(addTask(data))
     }
   return (
     <Dialog>
@@ -117,7 +122,7 @@ export function AddTaskModal() {
           <Button
             variant="outline"
             id="date"
-            className="w-48 justify-between font-normal"
+            className=" justify-between font-normal"
           >
             {field.value? (format(field.value, "PPP")): (<span>Select date</span>)}
             <ChevronDownIcon />

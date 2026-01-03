@@ -13,6 +13,22 @@ interface initialState {
 
 const initialState: initialState ={
     task:[
+         {
+    id: "1",
+    title: "Finish React Project",
+    description: "Complete the React project by integrating Redux and TailwindCSS.",
+    dueDate: "2026-01-10",
+    isCompleted: false,
+    priority: "High",
+  },
+  {
+    id: "2",
+    title: "Grocery Shopping",
+    description: "Buy vegetables, fruits, and milk for the week.",
+    dueDate: "2026-01-05",
+    isCompleted: true,
+    priority: "Low",
+  },
 
 ]
 }
@@ -50,6 +66,18 @@ const tasksSlice = createSlice({
 
         deleteTask:(state,action:PayloadAction<string>)=>{
             state.task = state.task.filter((task)=>task.id !== action.payload)
+        },
+
+        updateTask:(state,action:PayloadAction<ITask>)=>{
+            const {id,title,description,dueDate,priority} = action.payload;
+
+            const existingTask = state.task.find((task)=>task.id === id);
+            if(existingTask){
+                existingTask.title = title;
+                existingTask.description = description;
+                existingTask.dueDate = dueDate;
+                existingTask.priority = priority;
+            }
         }
     }
 })
@@ -60,5 +88,5 @@ export const SelectTask = (state:RootState)=>{
 
 }
 
-export const {addTask, toggleCompletion, deleteTask} = tasksSlice.actions
+export const {addTask, toggleCompletion, deleteTask, updateTask} = tasksSlice.actions
 export default tasksSlice.reducer;

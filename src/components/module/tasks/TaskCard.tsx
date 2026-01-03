@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { cn } from "@/lib/utils";
-import { toggleCompletion } from "@/Redux/features/tasks/TasksSlice";
+import { deleteTask, toggleCompletion } from "@/Redux/features/tasks/TasksSlice";
 import { useAppDispatch } from "@/Redux/hooks";
 import type { ITask } from "@/type";
 
@@ -34,7 +34,7 @@ const TaskCard = ({tasks}:Iprops) => {
              <div className="flex gap-3 items-center"> 
 
                 <Checkbox onClick={()=>dispatch(toggleCompletion(tasks.id))} />
-                <Button variant={"link"} className="p-0 text-red-500">
+                <Button onClick={()=>dispatch(deleteTask(tasks.id))} variant={"link"} className="p-0 text-red-500">
                     delete
                     </Button>
 

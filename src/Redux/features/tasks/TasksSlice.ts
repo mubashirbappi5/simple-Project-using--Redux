@@ -34,6 +34,18 @@ const tasksSlice = createSlice({
 
            const taskData = CreateTask(action.payload)
             state.task.push(taskData)
+        },
+
+        toggleCompletion:(state, action:PayloadAction<string>)=>{
+
+            state.task.forEach((task)=>{
+                if(task.id === action.payload){
+                    task.isCompleted = !task.isCompleted
+                }
+
+            })
+
+
         }
     }
 })
@@ -43,5 +55,6 @@ export const SelectTask = (state:RootState)=>{
     return state.todo.task
 
 }
-export const {addTask} = tasksSlice.actions
+
+export const {addTask, toggleCompletion} = tasksSlice.actions
 export default tasksSlice.reducer;
